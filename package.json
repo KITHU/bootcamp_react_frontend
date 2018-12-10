@@ -7,17 +7,6 @@
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KITHU/bootcamp_react_frontend.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/KITHU/bootcamp_react_frontend/issues"
-  },
-  "homepage": "https://github.com/KITHU/bootcamp_react_frontend#readme",
   "dependencies": {
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -40,5 +29,8 @@
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
+  },
+  "env": {
+    "jquery": true
   }
 }
