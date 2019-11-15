@@ -33,16 +33,13 @@ export const fetchQuestionsFailed=(data)=>{
 }
 
 export const fetAllQuestions=()=>{
-  console.log("clicked")
   return function(dispatch){
     dispatch(fetchQuestions())
     Axios.get(url,config)
     .then(res=>{
-      console.log("dataaaaaa")
-      dispatch(fetchQuestionsSuccess(res.data))
+      dispatch(fetchQuestionsSuccess(res.data.All_Questions))
     })
     .catch(err=>{
-      console.log("errroooor")
       dispatch(fetchQuestionsFailed(err.data))
     })
   }

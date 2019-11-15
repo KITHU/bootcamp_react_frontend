@@ -1,9 +1,9 @@
 import React,{Component} from 'react'
-import {CircularProgress} from '@material-ui/core'
 import {connect} from 'react-redux'
 import { fetAllQuestions } from '../actions/ActionQuestions'
 
-import {Paper} from '@material-ui/core'
+import {CircularProgress, Container, Grid, Paper} from '@material-ui/core'
+
 
 
 class Questions extends Component{
@@ -16,13 +16,27 @@ class Questions extends Component{
     this.props.fetAllQuestions()
   }
   render(){
-    console.log(this.props.allquestions)
     return (
-      <div>
-        {
-          this.props.loading? <CircularProgress />:""
-        }
-      <Paper>hello</Paper>
+      <div className="container">
+          {
+            this.props.loading?
+            <div className="valign-wrapper"> 
+              <div className="progress">
+                <div className="indeterminate"></div>
+              </div>
+            </div>:""
+          }
+          {
+            this.props.allquestions.map(q=>
+              <>
+              <div className="section">
+                <h5>{q.title}</h5>
+                <p>{q.description}</p>
+              </div>
+              <div className="divider"/>
+              </>
+            )
+          }
       </div>
     )
   }
