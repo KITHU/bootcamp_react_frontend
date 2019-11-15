@@ -1,14 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Provider} from 'react-redux'
+import store from './redux/store'
 import './App.css';
 
 import SignIn from './components/Signin'
 import SignUp from './components/Signup'
 function App() {
   return (
-    <div className="App">
-     <SignUp/>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+      <SignUp/>
+      </div>
+    </Provider>
   );
 }
 
