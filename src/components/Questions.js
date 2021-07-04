@@ -2,9 +2,6 @@ import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import { fetAllQuestions } from '../actions/ActionQuestions'
 
-import {CircularProgress, Container, Grid, Paper} from '@material-ui/core'
-
-
 
 class Questions extends Component{
   constructor(props){

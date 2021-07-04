@@ -1,132 +1,67 @@
-import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import React, { Component } from 'react'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
-const useStyles = makeStyles(theme => ({
-  '@global': {
-    body: {
-      backgroundColor: theme.palette.common.white,
-    },
-  },
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+export default class Signup extends Component {
+  constructor(){
+    super()
+    this.state={
+      username:"",
+      email:"",
+      password:""
+    }
+  }
+  validate=(e)=>{
+    e.preventDefault()
+    console.log(this.state.email)
+    console.log(this.state.password)
+    console.log(this.state.username)
+  }
+  handleChange=(e)=>{
+    this.setState({
+      [e.target.name]:e.target.value
+    })
+  }
+  render() {
+    return (
+      <div>
+        <div className="container">
+          <div className="row">
+              <form>
+                <div className="row">
+                    <div className="col s12 m6 offset-m3">
+                          <div className="card center-align mg">
+                              <div className="card-content">
+                                  <span className="card-title">CREATE ACCOUNT</span>
 
-export default function SignUp() {
-  const classes = useStyles();
+                                  <div className="input-field">
+                                      <i className="material-icons prefix">user</i>
+                                      <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
+                                      <label htmlFor="email">UserName</label>
+                                  </div>
 
-  return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <form className={classes.form} noValidate>
-        <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="FirstName"
-            label="John"
-            name="name"
-            autoFocus
-          /> 
+                                  <div className="input-field">
+                                      <i className="material-icons prefix">security</i>
+                                      <input type="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+                                      <label htmlFor="email">Email</label>
+                                  </div>
 
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
+                                  <div className="input-field" >
+                                      <i className="material-icons prefix">password</i>
+                                      <input name="password" type="password" value={this.state.password} onChange={this.handleChange}/>
+                                      <label htmlFor="password">Password</label>
+                                  </div>
+
+                                  <button className="btn pulse waves-effect waves-light" type="submit" onClick={this.validate}name="action">Sign Up</button>
+                              </div>
+                              <div className="card-footer">already have an account, Sign in</div>
+                            </div>
+                          </div>
+                    </div>
+              </form>  
+          </div>
+        </div>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
-    </Container>
-  );
+    )
+  }
 }
+
